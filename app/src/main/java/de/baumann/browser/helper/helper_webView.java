@@ -45,11 +45,13 @@ import java.util.Locale;
 import de.baumann.browser.R;
 import de.baumann.browser.databases.DbAdapter_History;
 import de.baumann.browser.utils.Utils_AdClient;
+import de.baumann.browser.utils.Utils_UserAgent;
 
 import static android.content.ContentValues.TAG;
 import static android.webkit.WebSettings.MIXED_CONTENT_COMPATIBILITY_MODE;
 
 public class helper_webView {
+    public static Utils_UserAgent mUtils_UserAgent= new Utils_UserAgent();
 
     public static String getTitle (WebView webview) {
 
@@ -171,6 +173,31 @@ public class helper_webView {
 
             public void onPageFinished(WebView view, String url) {
                 SharedPreferences sharedPref = PreferenceManager.getDefaultSharedPreferences(from);
+
+                //request desktop desktop definition
+                String desktopUA = "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/56.0.2924.87 Safari/537.36";
+
+                //request desktop optimization
+                //this compares the sharedPref setting to the current user agent and
+                //corrects the user agent only if it is not the same as the shared pref
+                //then zooms out to keep it neat if it is the desktop setting.
+                if(sharedPref.getString("request_string", "").equals("Enabled")){
+                    //sharedPref.edit().putString("request_string", getString(R.string.app_yes)).apply();
+                    if (!mUtils_UserAgent.getUserAgent(view).equals(desktopUA)) {
+                        mUtils_UserAgent.setUserAgent(view.getContext(), view, true, view.getUrl());
+                    }
+                }else{
+                    if (mUtils_UserAgent.getUserAgent(view).equals(desktopUA)) {
+                        mUtils_UserAgent.setUserAgent(view.getContext(), view, false, view.getUrl());
+                    }
+                }
+                // request desktop check every time to make the page look neat
+                if (sharedPref.getString("request_string" , "").equals("Enabled")){
+                    if (mUtils_UserAgent.getUserAgent(view).equals(desktopUA));
+                    view.zoomOut();
+                }
+                //end request desktop optimization
+
                 super.onPageFinished(view, url);
                 swipeRefreshLayout.setRefreshing(false);
                 urlBar.setText(webView.getTitle());
@@ -267,6 +294,31 @@ public class helper_webView {
 
                 public void onPageFinished(WebView view, String url) {
                     SharedPreferences sharedPref = PreferenceManager.getDefaultSharedPreferences(from);
+
+                    //request desktop desktop definition
+                    String desktopUA = "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/56.0.2924.87 Safari/537.36";
+
+                    //request desktop optimization
+                    //this compares the sharedPref setting to the current user agent and
+                    //corrects the user agent only if it is not the same as the shared pref
+                    //then zooms out to keep it neat if it is the desktop setting.
+                    if(sharedPref.getString("request_string", "").equals("Enabled")){
+                        //sharedPref.edit().putString("request_string", getString(R.string.app_yes)).apply();
+                        if (!mUtils_UserAgent.getUserAgent(view).equals(desktopUA)) {
+                            mUtils_UserAgent.setUserAgent(view.getContext(), view, true, view.getUrl());
+                        }
+                    }else{
+                        if (mUtils_UserAgent.getUserAgent(view).equals(desktopUA)) {
+                            mUtils_UserAgent.setUserAgent(view.getContext(), view, false, view.getUrl());
+                        }
+                    }
+                    // request desktop check every time to make the page look neat
+                    if (sharedPref.getString("request_string" , "").equals("Enabled")){
+                        if (mUtils_UserAgent.getUserAgent(view).equals(desktopUA));
+                        view.zoomOut();
+                    }
+                    //end request desktop optimization
+
                     super.onPageFinished(view, url);
                     swipeRefreshLayout.setRefreshing(false);
                     urlBar.setText(webView.getTitle());
