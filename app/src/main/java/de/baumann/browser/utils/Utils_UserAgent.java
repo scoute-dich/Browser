@@ -54,8 +54,8 @@ public class Utils_UserAgent {
         if (mWebView != null) {
             String DESKTOP_USER_AGENT; String DEFAULT_USER_AGENT;
             DEFAULT_USER_AGENT = getDefaultUA(context);
-            //DESKTOP_USER_AGENT = "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/56.0.2924.87 Safari/537.36";
-            DESKTOP_USER_AGENT = "Mozilla/5.0 (Windows NT 10.0; WOW64; rv:47.0) Gecko/20100101 Firefox/47.0";
+            DESKTOP_USER_AGENT = "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/56.0.2924.87 Safari/537.36";
+            //DESKTOP_USER_AGENT = "Mozilla/5.0 (Windows NT 10.0; WOW64; rv:47.0) Gecko/20100101 Firefox/47.0";
 
             if (choice) {
                 CookieManager mCookieManager = CookieManager.getInstance();
