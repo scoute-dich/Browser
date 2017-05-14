@@ -295,8 +295,8 @@ public class helper_webView {
                 public void onPageFinished(WebView view, String url) {
                     SharedPreferences sharedPref = PreferenceManager.getDefaultSharedPreferences(from);
 
-                    //request desktop desktop definition
-                    String desktopUA = "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/56.0.2924.87 Safari/537.36";
+                    //access the constant desktop user agent defined in Utils_UserAgent
+                    String desktopUA = Utils_UserAgent.DESKTOP_USER_AGENT;;
 
                     //request desktop optimization
                     //this compares the sharedPref setting to the current user agent and
