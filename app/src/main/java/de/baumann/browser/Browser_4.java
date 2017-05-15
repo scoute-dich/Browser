@@ -1,22 +1,3 @@
-/*
-    This file is part of the Browser WebApp.
-
-    Browser WebApp is free software: you can redistribute it and/or modify
-    it under the terms of the GNU General Public License as published by
-    the Free Software Foundation, either version 3 of the License, or
-    (at your option) any later version.
-
-    Browser WebApp is distributed in the hope that it will be useful,
-    but WITHOUT ANY WARRANTY; without even the implied warranty of
-    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-    GNU General Public License for more details.
-
-    You should have received a copy of the GNU General Public License
-    along with the Browser webview app.
-
-    If not, see <http://www.gnu.org/licenses/>.
- */
-
 package de.baumann.browser;
 
 import android.annotation.SuppressLint;
@@ -91,8 +72,11 @@ import de.baumann.browser.popups.Popup_history;
 import de.baumann.browser.popups.Popup_pass;
 import de.baumann.browser.utils.Utils_UserAgent;
 
-public class Browser_right extends AppCompatActivity implements ObservableScrollViewCallbacks {
+/**
+ * Created by Ozymandias on 5/14/2017.
+ */
 
+public class Browser_4 extends AppCompatActivity implements ObservableScrollViewCallbacks{
     private ObservableWebView mWebView;
     private ProgressBar progressBar;
     private ImageButton imageButton;
@@ -105,14 +89,14 @@ public class Browser_right extends AppCompatActivity implements ObservableScroll
     private FrameLayout customViewContainer;
     private WebChromeClient.CustomViewCallback customViewCallback;
     private View mCustomView;
-    private myWebChromeClient mWebChromeClient;
+    private Browser_4.myWebChromeClient mWebChromeClient;
     private SharedPreferences sharedPref;
     private File shareFile;
     private ValueCallback<Uri[]> mFilePathCallback;
 
     private String shareString;
     private String mCameraPhotoPath;
-    private final String TAG = Browser_right.class.getSimpleName();
+    private final String TAG = Browser_4.class.getSimpleName();
 
     private String domain;
 
@@ -136,11 +120,11 @@ public class Browser_right extends AppCompatActivity implements ObservableScroll
         super.onCreate(savedInstanceState);
 
         getWindow().addFlags(WindowManager.LayoutParams.FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS);
-        getWindow().setStatusBarColor(ContextCompat.getColor(Browser_right.this, R.color.colorTwoDark));
+        getWindow().setStatusBarColor(ContextCompat.getColor(Browser_4.this, R.color.colorTwoDark));
 
         WebView.enableSlowWholeDocumentDraw();
         setContentView(R.layout.activity_browser);
-        helper_main.onStart(Browser_right.this);
+        helper_main.onStart(Browser_4.this);
 
         PreferenceManager.setDefaultValues(this, R.xml.user_settings, false);
         PreferenceManager.setDefaultValues(this, R.xml.user_settings_search, false);
@@ -150,7 +134,7 @@ public class Browser_right extends AppCompatActivity implements ObservableScroll
         sharedPref.getInt("keyboard", 0);
 
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
-        toolbar.setBackgroundColor(ContextCompat.getColor(Browser_right.this, R.color.colorTwo));
+        toolbar.setBackgroundColor(ContextCompat.getColor(Browser_4.this, R.color.colorTwo));
         setSupportActionBar(toolbar);
 
         actionBar = getSupportActionBar();
@@ -195,7 +179,7 @@ public class Browser_right extends AppCompatActivity implements ObservableScroll
             mWebView.setScrollViewCallbacks(this);
         }
 
-        mWebChromeClient = new myWebChromeClient();
+        mWebChromeClient = new Browser_4.myWebChromeClient();
         mWebView.setWebChromeClient(mWebChromeClient);
 
         imageButton_left = (ImageButton) findViewById(R.id.imageButton_left);
@@ -209,8 +193,8 @@ public class Browser_right extends AppCompatActivity implements ObservableScroll
             imageButton_right.setVisibility(View.INVISIBLE);
         }
 
-        helper_webView.webView_Settings(Browser_right.this, mWebView);
-        helper_webView.webView_WebViewClient(Browser_right.this, swipeView, mWebView, urlBar);
+        helper_webView.webView_Settings(Browser_4.this, mWebView);
+        helper_webView.webView_WebViewClient(Browser_4.this, swipeView, mWebView, urlBar);
 
         mWebView.getSettings().setCacheMode(WebSettings.LOAD_DEFAULT);
 
@@ -254,10 +238,10 @@ public class Browser_right extends AppCompatActivity implements ObservableScroll
             }
         });
 
-        helper_browser.toolbar(Browser_right.this, Browser_left.class, mWebView, toolbar);
-        helper_editText.editText_EditorAction(editText, Browser_right.this, mWebView, urlBar);
-        helper_editText.editText_FocusChange(editText, Browser_right.this);
-        helper_main.grantPermissionsStorage(Browser_right.this);
+        helper_browser.toolbar(Browser_4.this, Browser_5.class, mWebView, toolbar);
+        helper_editText.editText_EditorAction(editText, Browser_4.this, mWebView, urlBar);
+        helper_editText.editText_FocusChange(editText, Browser_4.this);
+        helper_main.grantPermissionsStorage(Browser_4.this);
 
         onNewIntent(getIntent());
     }
@@ -308,7 +292,7 @@ public class Browser_right extends AppCompatActivity implements ObservableScroll
                     .setAction(getString(R.string.toast_yes), new View.OnClickListener() {
                         @Override
                         public void onClick(View view) {
-                            helper_main.switchToActivity(Browser_right.this, Popup_files.class, "", false);
+                            helper_main.switchToActivity(Browser_4.this, Popup_files.class, "", false);
                         }
                     });
             snackbar.show();
@@ -325,7 +309,7 @@ public class Browser_right extends AppCompatActivity implements ObservableScroll
             sharingIntent.addFlags(Intent.FLAG_GRANT_READ_URI_PERMISSION);
             sharingIntent.putExtra(Intent.EXTRA_SUBJECT, mWebView.getTitle());
             sharingIntent.putExtra(Intent.EXTRA_TEXT, mWebView.getUrl());
-            Browser_right.this.startActivity(Intent.createChooser(sharingIntent, (getString(R.string.app_share_image))));
+            Browser_4.this.startActivity(Intent.createChooser(sharingIntent, (getString(R.string.app_share_image))));
             unregisterReceiver(onComplete2);
         }
     };
@@ -344,7 +328,7 @@ public class Browser_right extends AppCompatActivity implements ObservableScroll
                     getString(R.string.context_shareImage),
                     getString(R.string.context_readLater),
                     getString(R.string.context_left)};
-            new AlertDialog.Builder(Browser_right.this)
+            new AlertDialog.Builder(Browser_4.this)
                     .setPositiveButton(R.string.toast_cancel, new DialogInterface.OnClickListener() {
 
                         public void onClick(DialogInterface dialog, int whichButton) {
@@ -407,7 +391,7 @@ public class Browser_right extends AppCompatActivity implements ObservableScroll
 
                                     String domain2 = domain.substring(0,1).toUpperCase() + domain.substring(1);
 
-                                    DbAdapter_ReadLater db = new DbAdapter_ReadLater(Browser_right.this);
+                                    DbAdapter_ReadLater db = new DbAdapter_ReadLater(Browser_4.this);
                                     db.open();
                                     if(db.isExist(mWebView.getUrl())){
                                         Snackbar.make(editText, getString(R.string.toast_newTitle), Snackbar.LENGTH_LONG).show();
@@ -419,7 +403,7 @@ public class Browser_right extends AppCompatActivity implements ObservableScroll
                             }
                             if (options[item].equals(getString(R.string.context_left))) {
                                 if (url != null) {
-                                    helper_main.switchToActivity(Browser_right.this, Browser_left.class, url, false);
+                                    helper_main.switchToActivity(Browser_4.this, Browser_1.class, url, false);
                                 }
                             }
                         }
@@ -432,7 +416,7 @@ public class Browser_right extends AppCompatActivity implements ObservableScroll
                     getString(R.string.menu_share_link),
                     getString(R.string.context_readLater),
                     getString(R.string.context_left)};
-            new AlertDialog.Builder(Browser_right.this)
+            new AlertDialog.Builder(Browser_4.this)
                     .setPositiveButton(R.string.toast_cancel, new DialogInterface.OnClickListener() {
 
                         public void onClick(DialogInterface dialog, int whichButton) {
@@ -444,7 +428,7 @@ public class Browser_right extends AppCompatActivity implements ObservableScroll
                         public void onClick(DialogInterface dialog, int item) {
                             if (options[item].equals(getString(R.string.menu_share_link_copy))) {
                                 if (url != null) {
-                                    ClipboardManager clipboard = (ClipboardManager) Browser_right.this.getSystemService(Context.CLIPBOARD_SERVICE);
+                                    ClipboardManager clipboard = (ClipboardManager) Browser_4.this.getSystemService(Context.CLIPBOARD_SERVICE);
                                     clipboard.setPrimaryClip(ClipData.newPlainText("text", url));
                                     Snackbar.make(mWebView, R.string.context_linkCopy_toast, Snackbar.LENGTH_SHORT).show();
                                 }
@@ -455,7 +439,7 @@ public class Browser_right extends AppCompatActivity implements ObservableScroll
                                     sendIntent.setAction(Intent.ACTION_SEND);
                                     sendIntent.putExtra(Intent.EXTRA_TEXT, url);
                                     sendIntent.setType("text/plain");
-                                    Browser_right.this.startActivity(Intent.createChooser(sendIntent, getResources()
+                                    Browser_4.this.startActivity(Intent.createChooser(sendIntent, getResources()
                                             .getString(R.string.app_share_link)));
                                 }
                             }
@@ -470,7 +454,7 @@ public class Browser_right extends AppCompatActivity implements ObservableScroll
 
                                     String domain2 = domain.substring(0,1).toUpperCase() + domain.substring(1);
 
-                                    DbAdapter_ReadLater db = new DbAdapter_ReadLater(Browser_right.this);
+                                    DbAdapter_ReadLater db = new DbAdapter_ReadLater(Browser_4.this);
                                     db.open();
                                     if(db.isExist(mWebView.getUrl())){
                                         Snackbar.make(editText, getString(R.string.toast_newTitle), Snackbar.LENGTH_LONG).show();
@@ -482,7 +466,7 @@ public class Browser_right extends AppCompatActivity implements ObservableScroll
                             }
                             if (options[item].equals(getString(R.string.context_left))) {
                                 if (url != null) {
-                                    helper_main.switchToActivity(Browser_right.this, Browser_left.class, url, false);
+                                    helper_main.switchToActivity(Browser_4.this, Browser_1.class, url, false);
                                 }
                             }
                         }
@@ -536,7 +520,7 @@ public class Browser_right extends AppCompatActivity implements ObservableScroll
                     .setAction(getString(R.string.toast_yes), new View.OnClickListener() {
                         @Override
                         public void onClick(View view) {
-                            helper_main.closeApp(Browser_right.this, Browser_left.class, mWebView);
+                            helper_main.closeApp(Browser_4.this, Browser_1.class, mWebView);
                         }
                     });
             snackbar.show();
@@ -558,7 +542,7 @@ public class Browser_right extends AppCompatActivity implements ObservableScroll
                             .setAction(getString(R.string.toast_yes), new View.OnClickListener() {
                                 @Override
                                 public void onClick(View view) {
-                                    ClipboardManager clipboard = (ClipboardManager) Browser_right.this.getSystemService(Context.CLIPBOARD_SERVICE);
+                                    ClipboardManager clipboard = (ClipboardManager) Browser_4.this.getSystemService(Context.CLIPBOARD_SERVICE);
                                     clipboard.setPrimaryClip(ClipData.newPlainText("userName", sharedPref.getString("copyUN", "")));
 
                                     Snackbar snackbar = Snackbar
@@ -566,7 +550,7 @@ public class Browser_right extends AppCompatActivity implements ObservableScroll
                                             .setAction(getString(R.string.toast_yes), new View.OnClickListener() {
                                                 @Override
                                                 public void onClick(View view) {
-                                                    ClipboardManager clipboard = (ClipboardManager) Browser_right.this.getSystemService(Context.CLIPBOARD_SERVICE);
+                                                    ClipboardManager clipboard = (ClipboardManager) Browser_4.this.getSystemService(Context.CLIPBOARD_SERVICE);
                                                     clipboard.setPrimaryClip(ClipData.newPlainText("userName", sharedPref.getString("copyPW", "")));
                                                 }
                                             });
@@ -581,7 +565,7 @@ public class Browser_right extends AppCompatActivity implements ObservableScroll
                             .setAction(getString(R.string.toast_yes), new View.OnClickListener() {
                                 @Override
                                 public void onClick(View view) {
-                                    ClipboardManager clipboard = (ClipboardManager) Browser_right.this.getSystemService(Context.CLIPBOARD_SERVICE);
+                                    ClipboardManager clipboard = (ClipboardManager) Browser_4.this.getSystemService(Context.CLIPBOARD_SERVICE);
                                     clipboard.setPrimaryClip(ClipData.newPlainText("userName", sharedPref.getString("copyUN", "")));
 
                                     Snackbar snackbar = Snackbar
@@ -589,7 +573,7 @@ public class Browser_right extends AppCompatActivity implements ObservableScroll
                                             .setAction(getString(R.string.toast_yes), new View.OnClickListener() {
                                                 @Override
                                                 public void onClick(View view) {
-                                                    ClipboardManager clipboard = (ClipboardManager) Browser_right.this.getSystemService(Context.CLIPBOARD_SERVICE);
+                                                    ClipboardManager clipboard = (ClipboardManager) Browser_4.this.getSystemService(Context.CLIPBOARD_SERVICE);
                                                     clipboard.setPrimaryClip(ClipData.newPlainText("userName", sharedPref.getString("copyPW", "")));
                                                 }
                                             });
@@ -615,7 +599,7 @@ public class Browser_right extends AppCompatActivity implements ObservableScroll
     @Override
     public boolean onPrepareOptionsMenu(Menu menu) {
         super.onPrepareOptionsMenu(menu);
-        helper_browser.prepareMenu(Browser_right.this, menu);
+        helper_browser.prepareMenu(Browser_4.this, menu);
         return true; // this is important to call so that new menu is shown
     }
 
@@ -637,19 +621,19 @@ public class Browser_right extends AppCompatActivity implements ObservableScroll
         if (id == R.id.action_search) {
             urlBar.setVisibility(View.GONE);
             editText.setVisibility(View.VISIBLE);
-            helper_editText.showKeyboard(Browser_right.this, editText, 3, "", getString(R.string.app_search_hint));
+            helper_editText.showKeyboard(Browser_4.this, editText, 3, "", getString(R.string.app_search_hint));
         }
 
         if (id == R.id.action_history) {
-            helper_main.switchToActivity(Browser_right.this, Popup_history.class, "", false);
+            helper_main.switchToActivity(Browser_4.this, Popup_history.class, "", false);
         }
 
         if (id == R.id.action_search_chooseWebsite) {
-            helper_editText.editText_searchWeb(editText, Browser_right.this);
+            helper_editText.editText_searchWeb(editText, Browser_4.this);
         }
 
         if (id == R.id.action_pass) {
-            helper_main.switchToActivity(Browser_right.this, Popup_pass.class, "", false);
+            helper_main.switchToActivity(Browser_4.this, Popup_pass.class, "", false);
             sharedPref.edit().putString("pass_copy_url", mWebView.getUrl()).apply();
             sharedPref.edit().putString("pass_copy_title", mWebView.getTitle()).apply();
         }
@@ -666,8 +650,8 @@ public class Browser_right extends AppCompatActivity implements ObservableScroll
 
             final String whiteList = sharedPref.getString("whiteList", "");
 
-            AlertDialog.Builder builder = new AlertDialog.Builder(Browser_right.this);
-            View dialogView = View.inflate(Browser_right.this, R.layout.dialog_toggle, null);
+            AlertDialog.Builder builder = new AlertDialog.Builder(Browser_4.this);
+            View dialogView = View.inflate(Browser_4.this, R.layout.dialog_toggle, null);
 
             Switch sw_java = (Switch) dialogView.findViewById(R.id.switch1);
             Switch sw_pictures = (Switch) dialogView.findViewById(R.id.switch2);
@@ -763,7 +747,7 @@ public class Browser_right extends AppCompatActivity implements ObservableScroll
                     if(isChecked){
                         sharedPref.edit().putString("loc_string", getString(R.string.app_yes)).apply();
                         mWebView.getSettings().setGeolocationEnabled(true);
-                        helper_main.grantPermissionsLoc(Browser_right.this);
+                        helper_main.grantPermissionsLoc(Browser_4.this);
                     }else{
                         sharedPref.edit().putString("loc_string", getString(R.string.app_no)).apply();
                         mWebView.getSettings().setGeolocationEnabled(false);
@@ -800,10 +784,10 @@ public class Browser_right extends AppCompatActivity implements ObservableScroll
                         //immediately being available, wouldnt want to miss the change in background process
                         //lag from using apply(), feel free to use apply if you prefer though.
                         sharedPref.edit().putString("blockads_string", getString(R.string.app_yes)).commit();
-                        helper_webView.webView_WebViewClient(Browser_right.this, swipeView, mWebView, urlBar);
+                        helper_webView.webView_WebViewClient(Browser_4.this, swipeView, mWebView, urlBar);
                     }else{
                         sharedPref.edit().putString("blockads_string", getString(R.string.app_no)).commit();
-                        helper_webView.webView_WebViewClient(Browser_right.this, swipeView, mWebView, urlBar);
+                        helper_webView.webView_WebViewClient(Browser_4.this, swipeView, mWebView, urlBar);
                     }
                 }
             });
@@ -814,11 +798,11 @@ public class Browser_right extends AppCompatActivity implements ObservableScroll
                                              boolean isChecked) {
                     if(isChecked){
                         sharedPref.edit().putString("request_string", getString(R.string.app_yes)).apply();
-                        myUserAgent.setUserAgent(Browser_right.this, mWebView, true, mWebView.getUrl());
+                        myUserAgent.setUserAgent(Browser_4.this, mWebView, true, mWebView.getUrl());
 
                     }else{
                         sharedPref.edit().putString("request_string", getString(R.string.app_no)).apply();
-                        myUserAgent.setUserAgent(Browser_right.this, mWebView, false, mWebView.getUrl());
+                        myUserAgent.setUserAgent(Browser_4.this, mWebView, false, mWebView.getUrl());
                     }
                 }
             });
@@ -835,7 +819,7 @@ public class Browser_right extends AppCompatActivity implements ObservableScroll
                 public void onClick(DialogInterface dialog, int whichButton) {
                     sharedPref.edit().putString("pass_copy_url", mWebView.getUrl()).apply();
                     sharedPref.edit().putString("lastActivity", "browser_right").apply();
-                    helper_main.switchToActivity(Browser_right.this, Activity_settings.class, "", true);
+                    helper_main.switchToActivity(Browser_4.this, Activity_settings.class, "", true);
                 }
             });
 
@@ -852,11 +836,11 @@ public class Browser_right extends AppCompatActivity implements ObservableScroll
         if (id == R.id.menu_save_bookmark) {
             urlBar.setVisibility(View.GONE);
             editText.setVisibility(View.VISIBLE);
-            helper_editText.editText_saveBookmark(editText, Browser_right.this, mWebView);
+            helper_editText.editText_saveBookmark(editText, Browser_4.this, mWebView);
         }
 
         if (id == R.id.menu_save_readLater) {
-            DbAdapter_ReadLater db = new DbAdapter_ReadLater(Browser_right.this);
+            DbAdapter_ReadLater db = new DbAdapter_ReadLater(Browser_4.this);
             db.open();
             if(db.isExist(mWebView.getUrl())){
                 Snackbar.make(editText, getString(R.string.toast_newTitle), Snackbar.LENGTH_LONG).show();
@@ -867,22 +851,22 @@ public class Browser_right extends AppCompatActivity implements ObservableScroll
         }
 
         if (id == R.id.menu_save_pass) {
-            helper_editText.editText_savePass(Browser_right.this, mWebView, mWebView.getTitle(), mWebView.getUrl());
+            helper_editText.editText_savePass(Browser_4.this, mWebView, mWebView.getTitle(), mWebView.getUrl());
         }
 
         if (id == R.id.menu_createShortcut) {
             Intent i = new Intent();
             i.setAction(Intent.ACTION_VIEW);
-            i.setClassName(Browser_right.this, "de.baumann.browser.Browser_left");
+            i.setClassName(Browser_4.this, "de.baumann.browser.Browser_1");
             i.setData(Uri.parse(mWebView.getUrl()));
 
             Intent shortcut = new Intent();
             shortcut.putExtra("android.intent.extra.shortcut.INTENT", i);
             shortcut.putExtra("android.intent.extra.shortcut.NAME", "THE NAME OF SHORTCUT TO BE SHOWN");
             shortcut.putExtra(Intent.EXTRA_SHORTCUT_NAME, mWebView.getTitle());
-            shortcut.putExtra(Intent.EXTRA_SHORTCUT_ICON_RESOURCE, Intent.ShortcutIconResource.fromContext(Browser_right.this.getApplicationContext(), R.mipmap.ic_launcher));
+            shortcut.putExtra(Intent.EXTRA_SHORTCUT_ICON_RESOURCE, Intent.ShortcutIconResource.fromContext(Browser_4.this.getApplicationContext(), R.mipmap.ic_launcher));
             shortcut.setAction("com.android.launcher.action.INSTALL_SHORTCUT");
-            Browser_right.this.sendBroadcast(shortcut);
+            Browser_4.this.sendBroadcast(shortcut);
             Snackbar.make(mWebView, R.string.menu_createShortcut_success, Snackbar.LENGTH_SHORT).show();
         }
 
@@ -906,21 +890,21 @@ public class Browser_right extends AppCompatActivity implements ObservableScroll
 
         if (id == R.id.menu_share_link_copy) {
             String  url = mWebView.getUrl();
-            ClipboardManager clipboard = (ClipboardManager) Browser_right.this.getSystemService(Context.CLIPBOARD_SERVICE);
+            ClipboardManager clipboard = (ClipboardManager) Browser_4.this.getSystemService(Context.CLIPBOARD_SERVICE);
             clipboard.setPrimaryClip(ClipData.newPlainText("text", url));
             Snackbar.make(mWebView, R.string.context_linkCopy_toast, Snackbar.LENGTH_SHORT).show();
         }
 
         if (id == R.id.action_downloads) {
-            helper_main.switchToActivity(Browser_right.this, Popup_files.class, "", false);
+            helper_main.switchToActivity(Browser_4.this, Popup_files.class, "", false);
         }
 
         if (id == R.id.action_search_go) {
 
             String text = editText.getText().toString();
-            helper_webView.openURL(Browser_right.this, mWebView, editText);
-            helper_editText.hideKeyboard(Browser_right.this, editText, 0, text, getString(R.string.app_search_hint));
-            helper_editText.editText_EditorAction(editText, Browser_right.this, mWebView, urlBar);
+            helper_webView.openURL(Browser_4.this, mWebView, editText);
+            helper_editText.hideKeyboard(Browser_4.this, editText, 0, text, getString(R.string.app_search_hint));
+            helper_editText.editText_EditorAction(editText, Browser_4.this, mWebView, urlBar);
             urlBar.setVisibility(View.VISIBLE);
             editText.setVisibility(View.GONE);
         }
@@ -928,9 +912,9 @@ public class Browser_right extends AppCompatActivity implements ObservableScroll
         if (id == R.id.action_search_onSite) {
             urlBar.setVisibility(View.GONE);
             editText.setVisibility(View.VISIBLE);
-            helper_editText.showKeyboard(Browser_right.this, editText, 1, "", getString(R.string.app_search_hint));
-            helper_editText.editText_FocusChange_searchSite(editText, Browser_right.this);
-            helper_editText.editText_searchSite(editText, Browser_right.this, mWebView, urlBar);
+            helper_editText.showKeyboard(Browser_4.this, editText, 1, "", getString(R.string.app_search_hint));
+            helper_editText.editText_FocusChange_searchSite(editText, Browser_4.this);
+            helper_editText.editText_searchSite(editText, Browser_4.this, mWebView, urlBar);
         }
 
         if (id == R.id.action_search_onSite_go) {
@@ -938,10 +922,10 @@ public class Browser_right extends AppCompatActivity implements ObservableScroll
             String text = editText.getText().toString();
 
             if (text.startsWith(getString(R.string.app_search))) {
-                helper_editText.editText_searchSite(editText, Browser_right.this, mWebView, urlBar);
+                helper_editText.editText_searchSite(editText, Browser_4.this, mWebView, urlBar);
             } else {
                 mWebView.findAllAsync(text);
-                helper_editText.hideKeyboard(Browser_right.this, editText, 1, getString(R.string.app_search) + " " + text, getString(R.string.app_search_hint_site));
+                helper_editText.hideKeyboard(Browser_4.this, editText, 1, getString(R.string.app_search) + " " + text, getString(R.string.app_search_hint_site));
             }
         }
 
@@ -957,13 +941,13 @@ public class Browser_right extends AppCompatActivity implements ObservableScroll
             urlBar.setVisibility(View.VISIBLE);
             urlBar.setText(mWebView.getTitle());
             editText.setVisibility(View.GONE);
-            helper_editText.editText_FocusChange(editText, Browser_right.this);
-            helper_editText.editText_EditorAction(editText, Browser_right.this, mWebView, urlBar);
-            helper_editText.hideKeyboard(Browser_right.this, editText, 0, mWebView.getTitle(), getString(R.string.app_search_hint));
+            helper_editText.editText_FocusChange(editText, Browser_4.this);
+            helper_editText.editText_EditorAction(editText, Browser_4.this, mWebView, urlBar);
+            helper_editText.hideKeyboard(Browser_4.this, editText, 0, mWebView.getTitle(), getString(R.string.app_search_hint));
         }
 
         if (id == R.id.action_save_bookmark) {
-            helper_editText.editText_saveBookmark_save(editText, Browser_right.this, mWebView);
+            helper_editText.editText_saveBookmark_save(editText, Browser_4.this, mWebView);
             urlBar.setVisibility(View.VISIBLE);
             editText.setVisibility(View.GONE);
         }
@@ -978,7 +962,7 @@ public class Browser_right extends AppCompatActivity implements ObservableScroll
             Log.i(TAG, "onGeolocationPermissionsShowPrompt()");
 
             final boolean remember = false;
-            AlertDialog.Builder builder = new AlertDialog.Builder(Browser_right.this);
+            AlertDialog.Builder builder = new AlertDialog.Builder(Browser_4.this);
             builder.setTitle(R.string.app_location_title);
             builder.setMessage(R.string.app_location_message)
                     .setCancelable(true).setPositiveButton(R.string.app_location_allow, new DialogInterface.OnClickListener() {
@@ -1015,7 +999,7 @@ public class Browser_right extends AppCompatActivity implements ObservableScroll
                 mWebView.getSettings().setJavaScriptEnabled(true);
             } else {
                 if (sharedPref.getString("started", "").equals("yes")) {
-                    if (sharedPref.getString("java_string", "True").equals(Browser_right.this.getString(R.string.app_yes))){
+                    if (sharedPref.getString("java_string", "True").equals(Browser_4.this.getString(R.string.app_yes))){
                         mWebView.getSettings().setJavaScriptEnabled(true);
                     } else {
                         mWebView.getSettings().setJavaScriptEnabled(false);
@@ -1161,7 +1145,7 @@ public class Browser_right extends AppCompatActivity implements ObservableScroll
                         .setAction(getString(R.string.toast_yes), new View.OnClickListener() {
                             @Override
                             public void onClick(View view) {
-                                helper_main.switchToActivity(Browser_right.this, Popup_files.class, "", false);
+                                helper_main.switchToActivity(Browser_4.this, Popup_files.class, "", false);
                             }
                         });
                 snackbar.show();

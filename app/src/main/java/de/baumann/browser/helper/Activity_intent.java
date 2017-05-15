@@ -34,7 +34,7 @@ import android.support.v7.app.NotificationCompat;
 
 import java.util.Random;
 
-import de.baumann.browser.Browser_left;
+import de.baumann.browser.Browser_1;
 import de.baumann.browser.R;
 
 public class Activity_intent extends Activity {
@@ -73,9 +73,9 @@ public class Activity_intent extends Activity {
         android.content.Intent iMain = new android.content.Intent();
         iMain.setData(data);
         iMain.setAction(Intent.ACTION_VIEW);
-        iMain.setClassName(Activity_intent.this, "de.baumann.browser.Browser_left");
+        iMain.setClassName(Activity_intent.this, "de.baumann.browser.Browser_1");
 
-        android.content.Intent iAction = new android.content.Intent(this, Browser_left.class);
+        android.content.Intent iAction = new android.content.Intent(this, Browser_1.class);
         iAction.setAction("readLater");
 
         android.content.Intent iAction_2 = new android.content.Intent(this, Activity_intent_add.class);
