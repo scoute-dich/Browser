@@ -839,7 +839,7 @@ public class Browser_2 extends AppCompatActivity implements ObservableScrollView
 
                 public void onClick(DialogInterface dialog, int whichButton) {
                     sharedPref.edit().putString("pass_copy_url", mWebView.getUrl()).apply();
-                    sharedPref.edit().putString("lastActivity", "browser_right").apply();
+                    sharedPref.edit().putString("lastActivity", "browser_2").apply();
                     helper_main.switchToActivity(Browser_2.this, Activity_settings.class, "", true);
                 }
             });
