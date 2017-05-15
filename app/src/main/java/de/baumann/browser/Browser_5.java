@@ -70,6 +70,7 @@ import de.baumann.browser.helper.helper_webView;
 import de.baumann.browser.popups.Popup_files;
 import de.baumann.browser.popups.Popup_history;
 import de.baumann.browser.popups.Popup_pass;
+import de.baumann.browser.utils.Utils_AdBlocker;
 import de.baumann.browser.utils.Utils_UserAgent;
 
 /**
@@ -242,6 +243,10 @@ public class Browser_5 extends AppCompatActivity implements ObservableScrollView
         helper_editText.editText_EditorAction(editText, Browser_5.this, mWebView, urlBar);
         helper_editText.editText_FocusChange(editText, Browser_5.this);
         helper_main.grantPermissionsStorage(Browser_5.this);
+
+        //////////////////ad block
+        Utils_AdBlocker.init(this);
+        //////////////////ad block
 
         onNewIntent(getIntent());
     }
