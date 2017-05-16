@@ -142,7 +142,7 @@ public class Browser_1 extends AppCompatActivity implements ObservableScrollView
         super.onCreate(savedInstanceState);
 
         getWindow().addFlags(WindowManager.LayoutParams.FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS);
-        getWindow().setStatusBarColor(ContextCompat.getColor(Browser_1.this, R.color.colorPrimaryDark));
+        getWindow().setStatusBarColor(ContextCompat.getColor(Browser_1.this, R.color.colorPrimary));
 
         WebView.enableSlowWholeDocumentDraw();
         setContentView(R.layout.activity_browser);
@@ -177,6 +177,7 @@ public class Browser_1 extends AppCompatActivity implements ObservableScrollView
         }
 
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
+        toolbar.setBackgroundColor(ContextCompat.getColor(Browser_1.this, R.color.colorPrimary));
         setSupportActionBar(toolbar);
 
         actionBar = getSupportActionBar();
@@ -399,7 +400,12 @@ public class Browser_1 extends AppCompatActivity implements ObservableScrollView
                     getString(R.string.context_saveImage),
                     getString(R.string.context_shareImage),
                     getString(R.string.context_readLater),
-                    getString(R.string.context_right)};
+                    getString(R.string.context_1),
+                    getString(R.string.context_2),
+                    getString(R.string.context_3),
+                    getString(R.string.context_4),
+                    getString(R.string.context_5)
+            };
             new AlertDialog.Builder(Browser_1.this)
                     .setPositiveButton(R.string.toast_cancel, new DialogInterface.OnClickListener() {
 
@@ -473,9 +479,29 @@ public class Browser_1 extends AppCompatActivity implements ObservableScrollView
                                     }
                                 }
                             }
-                            if (options[item].equals(getString(R.string.context_right))) {
+                            if (options[item].equals(getString(R.string.context_1))) {
+                                if (url != null) {
+                                    helper_main.switchToActivity(Browser_1.this, Browser_1.class, url, false);
+                                }
+                            }
+                            if (options[item].equals(getString(R.string.context_2))) {
                                 if (url != null) {
                                     helper_main.switchToActivity(Browser_1.this, Browser_2.class, url, false);
+                                }
+                            }
+                            if (options[item].equals(getString(R.string.context_3))) {
+                                if (url != null) {
+                                    helper_main.switchToActivity(Browser_1.this, Browser_3.class, url, false);
+                                }
+                            }
+                            if (options[item].equals(getString(R.string.context_4))) {
+                                if (url != null) {
+                                    helper_main.switchToActivity(Browser_1.this, Browser_4.class, url, false);
+                                }
+                            }
+                            if (options[item].equals(getString(R.string.context_5))) {
+                                if (url != null) {
+                                    helper_main.switchToActivity(Browser_1.this, Browser_5.class, url, false);
                                 }
                             }
                         }
@@ -487,7 +513,12 @@ public class Browser_1 extends AppCompatActivity implements ObservableScrollView
                     getString(R.string.menu_share_link_copy),
                     getString(R.string.menu_share_link),
                     getString(R.string.context_readLater),
-                    getString(R.string.context_right)};
+                    getString(R.string.context_1),
+                    getString(R.string.context_2),
+                    getString(R.string.context_3),
+                    getString(R.string.context_4),
+                    getString(R.string.context_5)
+            };
             new AlertDialog.Builder(Browser_1.this)
                     .setPositiveButton(R.string.toast_cancel, new DialogInterface.OnClickListener() {
 
@@ -536,9 +567,29 @@ public class Browser_1 extends AppCompatActivity implements ObservableScrollView
                                     }
                                 }
                             }
-                            if (options[item].equals(getString(R.string.context_right))) {
+                            if (options[item].equals(getString(R.string.context_1))) {
+                                if (url != null) {
+                                    helper_main.switchToActivity(Browser_1.this, Browser_1.class, url, false);
+                                }
+                            }
+                            if (options[item].equals(getString(R.string.context_2))) {
                                 if (url != null) {
                                     helper_main.switchToActivity(Browser_1.this, Browser_2.class, url, false);
+                                }
+                            }
+                            if (options[item].equals(getString(R.string.context_3))) {
+                                if (url != null) {
+                                    helper_main.switchToActivity(Browser_1.this, Browser_3.class, url, false);
+                                }
+                            }
+                            if (options[item].equals(getString(R.string.context_4))) {
+                                if (url != null) {
+                                    helper_main.switchToActivity(Browser_1.this, Browser_4.class, url, false);
+                                }
+                            }
+                            if (options[item].equals(getString(R.string.context_5))) {
+                                if (url != null) {
+                                    helper_main.switchToActivity(Browser_1.this, Browser_5.class, url, false);
                                 }
                             }
                         }
