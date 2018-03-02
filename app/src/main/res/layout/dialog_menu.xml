@@ -34,7 +34,7 @@
             android:layout_toStartOf="@id/web_next"
             android:layout_marginTop="@dimen/layout_margin_4dp"
             android:layout_marginBottom="@dimen/layout_margin_4dp"
-            android:src="@drawable/icon_home"
+            android:src="@drawable/ic_action_close"
             android:background="@drawable/custom_button_dark"/>
 
         <ImageButton android:id="@+id/web_prev"
