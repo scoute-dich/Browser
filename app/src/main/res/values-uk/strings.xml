@@ -136,7 +136,7 @@
         filters you will use.</string>
     <string name="setting_title_fav">Favorite</string>
     <string name="setting_summary_fav">Here you can change the default website which loads on start of \"FOSS Browser\".
-    Enter \"about:blank\" to get an emty start site.</string>
+    Enter \"about:blank\" to get an empty start site.</string>
     <string name="setting_title_searchEngine">Custom search engine</string>
     <string name="setting_summary_searchEngine">Here you can enter a custom search URL. Also choose \"Custom search engine\" as search
     provider.</string>
