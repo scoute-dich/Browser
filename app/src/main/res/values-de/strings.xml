@@ -180,15 +180,8 @@ Dies zu deaktivieren ist sicherer, schneller und spart Datenvolumen. Manche Inha
     <string name="setting_gesture_09">Neuen Tab öffnen</string>
     <string name="setting_gesture_10">Tab schließen</string>
     <!-- Data -->
-    <string name="setting_title_export_whitelist">AdBlock Ausnahmen exportieren</string>
-    <string name="setting_title_import_whitelist">AdBlock Ausnahmen importieren</string>
-    <string name="export_whitelistAdBlock">export_whitelist_AdBlock</string>
-    <string name="setting_title_export_whitelistJS">JavaScript Ausnahmen exportieren</string>
-    <string name="setting_title_import_whitelistJS">JavaScript Ausnahmen importieren</string>
-    <string name="export_whitelistJS">export_whitelist_Javascript</string>
-    <string name="setting_title_export_whitelistCookie">Cookie Ausnahmen exportieren</string>
-    <string name="setting_title_import_whitelistCookie">Cookie Ausnahmen importieren</string>
-    <string name="export_whitelistCookie">export_whitelist_Cookie</string>
+    <string name="setting_title_export_bookmarks">Export bookmarks as HTML-file</string>
+    <string name="setting_title_import_bookmarks">Import bookmarks</string>
     <string name="setting_title_export_appData">App-Daten exportieren</string>
     <string name="setting_title_import_appData">App-Daten importieren</string>
     <string name="setting_summary_export_appData">Exportiere App-Daten (Startpage &amp; Vorschauen, Verlauf, Lesezeichen) und deine persönlichen Einstellungen.</string>
