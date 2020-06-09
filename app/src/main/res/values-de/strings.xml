@@ -180,8 +180,8 @@ Dies zu deaktivieren ist sicherer, schneller und spart Datenvolumen. Manche Inha
     <string name="setting_gesture_09">Neuen Tab öffnen</string>
     <string name="setting_gesture_10">Tab schließen</string>
     <!-- Data -->
-    <string name="setting_title_export_bookmarks">Export bookmarks as HTML-file</string>
-    <string name="setting_title_import_bookmarks">Import bookmarks</string>
+    <string name="setting_title_export_bookmarks">Lesezeichen als HTML-Datei exportieren</string>
+    <string name="setting_title_import_bookmarks">Lesezeichen importieren</string>
     <string name="setting_title_export_appData">App-Daten exportieren</string>
     <string name="setting_title_import_appData">App-Daten importieren</string>
     <string name="setting_summary_export_appData">Exportiere App-Daten (Startpage &amp; Vorschauen, Verlauf, Lesezeichen) und deine persönlichen Einstellungen.</string>
