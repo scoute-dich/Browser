@@ -177,15 +177,8 @@
     <string name="setting_gesture_09">Abrir novo separador</string>
     <string name="setting_gesture_10">Fechar separador</string>
     <!-- Data -->
-    <string name="setting_title_export_whitelist">Exportar lista branca AdBlock</string>
-    <string name="setting_title_import_whitelist">Importar lista branca AdBlock</string>
-    <string name="export_whitelistAdBlock">export_whitelist_AdBlock</string>
-    <string name="setting_title_export_whitelistJS">Exportar lista branca JavaScript</string>
-    <string name="setting_title_import_whitelistJS">Importar lista branca JavaScript</string>
-    <string name="export_whitelistJS">export_whitelist_Javascript</string>
-    <string name="setting_title_export_whitelistCookie">Exportar lista branca de Cookies</string>
-    <string name="setting_title_import_whitelistCookie">Importar lista branca de Cookies</string>
-    <string name="export_whitelistCookie">export_whitelist_Cookie</string>
+    <string name="setting_title_export_bookmarks">Export bookmarks as HTML-file</string>
+    <string name="setting_title_import_bookmarks">Import bookmarks</string>
     <string name="setting_title_export_appData">Exportar dados da aplicação</string>
     <string name="setting_title_import_appData">Importar dados da aplicação</string>
     <string name="setting_summary_export_appData">Exportar dados da aplicação (página inicial + pré-visualizações, histórico, marcadores) e definições do utilizador.</string>
